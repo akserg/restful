@@ -11,6 +11,6 @@ const PUT = const Put();
 /**
  * Mark the annotated method to respond on HTTP PUT requests.
  */
-class Put {
+class Put extends Annotation {
   const Put();
 }

@@ -11,6 +11,6 @@ const HEAD = const Head();
 /**
  * Mark the annotated method to respond on HTTP HEAD requests.
  */
-class Head {
+class Head extends Annotation {
   const Head();
 }

@@ -7,7 +7,7 @@ part of annotation;
  * Defines the media type(s) that the methods of a resource class or 
  * [MessageBodyWriter] can produce.
  */
-class Produces {
+class Produces extends Annotation {
   
   /**
    * Media type.

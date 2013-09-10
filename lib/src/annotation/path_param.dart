@@ -12,7 +12,7 @@ part of annotation;
  * A default value can be specified using the [DefaultValue]
  * annotation.
  */
-class PathParam {
+class PathParam extends Annotation {
   
   /**
    * Defines the name of the URI template parameter whose value will be used

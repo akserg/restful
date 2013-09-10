@@ -11,6 +11,6 @@ const DELETE = const Delete();
 /**
  * Mark the annotated method to respond on HTTP DELETE requests.
  */
-class Delete {
+class Delete extends Annotation {
   const Delete();
 }

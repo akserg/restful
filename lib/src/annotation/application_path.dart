@@ -8,7 +8,7 @@ part of annotation;
  * for all resource URIs provided by [Path]. May only be
  * applied to a subclass of [Application].
  */
-class ApplicationPath {
+class ApplicationPath extends Annotation {
   
   /**
    * Defines the base URI for all resource URIs. A trailing '/' character must 
@@ -16,5 +16,5 @@ class ApplicationPath {
    */
   final String value;
   
-  const ApplicationPath(this.value);
+  const ApplicationPath([this.value = ""]);
 }

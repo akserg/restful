@@ -9,18 +9,28 @@ part of core;
  * The getters and setters in this context class correspond to the parameters in
  * the aforementioned methods.
  */
-class ApplicationContext {
+class ServiceContext {
   
-  final Application application;
+  final Map<String, MethodMirror> _methods = new Map<String, MethodMirror>();
   
-  ApplicationContext(Application this.application);
+  String servicePath;
+  
+  void register(String path, MethodMirror method) {
+    if (_methods.containsKey(path)) {
+      throw new Exception("Method process $path duplicate");
+    } else {
+      _methods[path] = method;
+    }
+  }
   
   bool process(HttpRequest request, String path) {
-    print("Processing");
-    HttpResponse response = request.response;
-    response.write("Hello world");
-    response.statusCode = HttpStatus.OK;
-    response.close();
-    return true;
+    if (_methods.containsKey(path)) {
+      HttpResponse response = request.response;
+      response.write("Hello world");
+      response.statusCode = HttpStatus.OK;
+      response.close();
+      return true;
+    }
+    return false;
   }
 }

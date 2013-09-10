@@ -4,9 +4,17 @@ import 'package:restful/restful.dart';
 import 'shoping_application.dart';
 
 main() {
-  HttpServer.bind('127.0.0.1', 8080).then((server) {
+//  RestRuntime runtime = new RestRuntime();
+//  runtime.register([new ShoppingApllication()]);
+
+	String host = "127.0.0.1";
+	String port = 8080;
+  
+  HttpServer.bind(host, port).then((server) {
+  	print("Server starts on host ${host} and port ${port}");
+  	print("To stop server press CTRL + C");
     // Create new runtime
-    RuntimeDelegate runtime = new RuntimeDelegate();
+    RestRuntime runtime = new RestRuntime();
     // register all applications
     runtime.register([new ShoppingApllication()]);
     // Start listenning
@@ -28,6 +36,7 @@ main() {
           });
         }
         // Nothing found or url incorrect
+        request.response.write("404. Not found.");
         request.response.statusCode = HttpStatus.NOT_FOUND;
         request.response.close();
       };

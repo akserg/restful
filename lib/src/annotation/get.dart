@@ -11,6 +11,6 @@ const GET = const Get();
 /**
  * Mark the annotated method to respond on HTTP GET requests.
  */
-class Get {
+class Get extends Annotation {
   const Get();
 }

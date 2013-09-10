@@ -14,7 +14,7 @@ part of annotation;
  * path against the base URI , a leading '/' in a path is
  * ignored and base URIs are treated as if they ended in '/'.
  */
-class Path {
+class Path extends Annotation {
   
   /**
    * Defines a URI template for the resource class or method, must not include 
@@ -22,5 +22,5 @@ class Path {
    */
   final String value;
   
-  const Path(this.value);
+  const Path([this.value = ""]);
 }

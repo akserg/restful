@@ -6,6 +6,7 @@
  */
 library annotation;
 
+part 'src/annotation/annotation.dart';
 part 'src/annotation/application_path.dart';
 part 'src/annotation/delete.dart';
 part 'src/annotation/get.dart';

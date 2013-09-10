@@ -11,6 +11,6 @@ const POST = const Post();
 /**
  * Mark the annotated method to respond on HTTP POST requests.
  */
-class Post {
+class Post extends Annotation {
   const Post();
 }

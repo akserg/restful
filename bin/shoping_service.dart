@@ -11,10 +11,10 @@ class CustomerService {
   int _idCounter = 1;
   
   /**
-   * Return customer as string by specied [id].
+   * Return customer as string by specified [id].
    */
   @GET
-  @Path("{id}")
+  @Path("/user/{id}")
   @Produces("text/plain")
   String getCustomerString(@PathParam("id") int id) {
     Customer customer = _customerDB[id];
