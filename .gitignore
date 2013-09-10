@@ -1,0 +1,9 @@
+.DS_Store
+.project
+.children
+*.dart.js
+*.dart.js_
+*.dart.js.map
+packages
+packages/
+pubspec.lock
