@@ -5,6 +5,7 @@ Restful Changes
 
 * Created annotation and core libraries.
 * Created example not finished yet.
+* Added short version of annotation GET, HEAD, DELETE, POST and PUT
 
 ** September 9, 2013
 

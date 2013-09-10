@@ -4,6 +4,11 @@
 part of annotation;
 
 /**
+ * Short version of [Put].
+ */
+const PUT = const Put();
+
+/**
  * Mark the annotated method to respond on HTTP PUT requests.
  */
 class Put {
