@@ -19,3 +19,4 @@ part 'src/core/application_context.dart';
 part 'src/core/service_context.dart';
 part 'src/core/processor.dart';
 part 'src/core/parser.dart';
+part 'src/core/resolver.dart';

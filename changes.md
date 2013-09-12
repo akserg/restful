@@ -1,6 +1,10 @@
 Restful Changes
 ========================
 
+** September 12, 2013
+
+* Added Resolver class. Logic processing requests changed.
+
 ** September 10, 2013
 
 * Created annotation and core libraries.

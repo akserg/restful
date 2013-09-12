@@ -8,7 +8,7 @@ main() {
 //  runtime.register([new ShoppingApllication()]);
 
 	String host = "127.0.0.1";
-	String port = 8080;
+	int port = 8080;
   
   HttpServer.bind(host, port).then((server) {
   	print("Server starts on host ${host} and port ${port}");
@@ -20,7 +20,7 @@ main() {
     // Start listenning
     server.listen((HttpRequest request) {
       // Process REST services 
-      if (!runtime.process(request)) {
+      if (!runtime.service(request)) {
         // Process other type of requests or resources 
         final Uri uri = request.uri;
         if (!uri.isAbsolute) {
