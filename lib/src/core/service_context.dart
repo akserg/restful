@@ -11,10 +11,19 @@ part of core;
  */
 class ServiceContext {
   
+  /**
+   * Map of named [MethodMirror]'s.
+   */
   final Map<String, MethodMirror> _methods = new Map<String, MethodMirror>();
   
+  /**
+   * Service path.
+   */
   String servicePath;
   
+  /**
+   * Register [method] for [path].
+   */
   void register(String path, MethodMirror method) {
     if (_methods.containsKey(path)) {
       throw new Exception("Method process $path duplicate");
@@ -23,7 +32,10 @@ class ServiceContext {
     }
   }
   
-  bool process(HttpRequest request, String path) {
+  /**
+   * Service HttpRequest [request].
+   */
+  bool service(HttpRequest request, String path) {
     if (_methods.containsKey(path)) {
       HttpResponse response = request.response;
       response.write("Hello world");

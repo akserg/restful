@@ -3,6 +3,9 @@
 
 part of core;
 
+/**
+ * Application processor. 
+ */
 class Processor {
   
   final Parser _parser;

@@ -30,10 +30,11 @@ class RestRuntime {
     });
   }
   
+  /**
+   * Service HttpRequest [request] and fill in response.
+   */
   bool service(HttpRequest request) {
     String httpMethod = request.method;
-    // Dispatche
-    
     // Get application path from request
     String applicationPath = request.uri.path;
     if (_applicationContexts.containsKey(applicationPath)) {
@@ -41,7 +42,7 @@ class RestRuntime {
       // Get service path
       String servicePath = "";
       // Process request with ApplicationContext
-      return context.process(request, request.uri);
+      return context.service(request, request.uri);
     }
     return false;
   }

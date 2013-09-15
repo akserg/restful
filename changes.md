@@ -1,6 +1,11 @@
 Restful Changes
 ========================
 
+** September 15, 2013
+
+* Set of annotations moved in one file.
+* Optimized routing in Rest.
+
 ** September 12, 2013
 
 * Added Resolver class. Logic processing requests changed.

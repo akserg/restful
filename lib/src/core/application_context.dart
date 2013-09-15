@@ -16,6 +16,9 @@ class ApplicationContext {
 	 */  
   final Application application;
   
+  /**
+   * Specified application path.
+   */
   String applicationPath = "";
   
   /**
@@ -28,6 +31,9 @@ class ApplicationContext {
    */
   ApplicationContext(Application this.application);
   
+  /**
+   * Register [ServiceContext].
+   */
   void register(ServiceContext serviceContext) {
     assert(serviceContext != null);
     if (_serviceContexts.containsKey(serviceContext.servicePath)) {
@@ -38,13 +44,13 @@ class ApplicationContext {
   }
   
   /**
-   * Find service for [path] and fill response from [request].
+   * Service HttpRequest [request] with [uri].
    */
-  bool process(HttpRequest request, Uri uri) {
+  bool service(HttpRequest request, Uri uri) {
     if (_serviceContexts.containsKey(uri.path)) {
       print("Processing");
       ServiceContext serviceContext = _serviceContexts[uri.path];
-      return serviceContext.process(request, uri.path);
+      return serviceContext.service(request, uri.path);
     }
     return false;
   }

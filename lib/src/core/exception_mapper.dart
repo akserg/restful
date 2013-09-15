@@ -4,7 +4,7 @@
 part of core;
 
 /**
- * Contract for a provider that maps Java exceptions to {@link javax.ws.rs.core.Response}.
+ * Contract for a provider that maps an [RestException] to a [HttpResponse].
  */
 abstract class ExceptionMapper<E extends RestException> {
   

@@ -13,7 +13,8 @@ abstract class Application {
    */
   Set get services => new Set();
   
-  void process(HttpRequest request) {
-    
-  }
+  /**
+   * Service HttpRequest [request] and fill in response.
+   */
+  void service(HttpRequest request);
 }

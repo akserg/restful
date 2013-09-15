@@ -4,27 +4,27 @@ import 'package:restful/restful.dart';
 import 'shoping_application.dart';
 
 main() {
-//  RestRuntime runtime = new RestRuntime();
-//  runtime.register([new ShoppingApllication()]);
+//  RestRuntime rest = new RestRuntime();
+//  rest.register([new ShoppingApllication()]);
 
 	String host = "127.0.0.1";
 	int port = 8080;
   
   HttpServer.bind(host, port).then((server) {
-  	print("Server starts on host ${host} and port ${port}");
+  	print("Server runs on [${host}:${port}]");
   	print("To stop server press CTRL + C");
-    // Create new runtime
-    RestRuntime runtime = new RestRuntime();
+    // Create new rest runtime
+    RestRuntime rest = new RestRuntime();
     // register all applications
-    runtime.register([new ShoppingApllication()]);
+    rest.register([new ShoppingApllication()]);
     // Start listenning
     server.listen((HttpRequest request) {
       // Process REST services 
-      if (!runtime.service(request)) {
+      if (!rest.service(request)) {
         // Process other type of requests or resources 
         final Uri uri = request.uri;
         if (!uri.isAbsolute) {
-          final String stringPath = uri.path == '/' ? '/index.html' : uri.path;
+          final String stringPath = uri.path == '/' ? 'index.html' : uri.path;
           final File file = new File(stringPath);
           file.exists().then((bool found) {
             if (found) {
@@ -36,7 +36,7 @@ main() {
           });
         }
         // Nothing found or url incorrect
-        request.response.write("404. Not found.");
+        request.response.write("<h1>Error</h1><p>404 - Resource not found</p>");
         request.response.statusCode = HttpStatus.NOT_FOUND;
         request.response.close();
       };
