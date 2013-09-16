@@ -4,4 +4,5 @@ author: Sergey Akopkokhyants <akserg@gmail.com>
 description: Restful is a library built specifically to enable you to build correct REST web services on Dart.
 homepage: https://github.com/akserg/restful
 dependencies:
+  logging_handlers: any
   unittest: '>=0.7.2'

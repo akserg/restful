@@ -1,6 +1,11 @@
 Restful Changes
 ========================
 
+** September 16, 2013
+
+* Added loggin library.
+* Changed example and README.md
+
 ** September 15, 2013
 
 * Set of annotations moved in one file.

@@ -8,17 +8,24 @@ part of core;
  */
 class RestRuntime {
   
+  /**
+   * Map of [ApplicationContext]'s.
+   */
   final Map<String, ApplicationContext> _applicationContexts = new Map<String, ApplicationContext>();
   
+  RestRuntime() {
+    logger.info("Starting REST server");
+  }
+  
   /**
-   * Register list of the supplied applications.
+   * Register list of the specified [applications].
    */
   void register(List<Application> applications) {
     assert(applications != null);
     // Process all applications and create ApplicationContext per each of them.
     applications.forEach((Application app){
       // Create Parser and Processor
-      Processor processor = new Processor(new Parser());
+      ApplicationProcessor processor = new ApplicationProcessor(new AnnotationParser());
       // Process application
       ApplicationContext applicationContext = processor.process(app);
       // Check duplicates
@@ -26,6 +33,7 @@ class RestRuntime {
         throw new Exception("Found duplicate path ${applicationContext.applicationPath}");
       } else {
         _applicationContexts[applicationContext.applicationPath] = applicationContext;
+        logger.info("${app.toString()} added to pull of REST applications.");
       }
     });
   }
@@ -37,7 +45,11 @@ class RestRuntime {
     String httpMethod = request.method;
     // Get application path from request
     String applicationPath = request.uri.path;
+    //
+    logger.fine("Service ${request.method} method for ${request.uri.path}");
+    //
     if (_applicationContexts.containsKey(applicationPath)) {
+      // Return ApplicationContext.
       ApplicationContext context = _applicationContexts[applicationPath];
       // Get service path
       String servicePath = "";

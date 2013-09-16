@@ -4,9 +4,9 @@
 part of core;
 
 /**
- * Parse Dart instances and classes.
+ * Parse Dart instances and classes to return annotations.
  */
-class Parser {
+class AnnotationParser {
   
   /**
    * Return iterable set of [InstanceMirror]'s by [instance].
