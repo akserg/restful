@@ -10,7 +10,7 @@ part 'customer.dart';
  * Rest based shopping application.
  * All resources of that application under [/resource].  
  */
-@ApplicationPath("/resource")
+@ApplicationPath("/sc/resource")
 class ShoppingApllication extends Application {
   
   /**

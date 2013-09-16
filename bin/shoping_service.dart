@@ -14,7 +14,8 @@ class CustomerService {
    * Return customer as string by specified [id].
    */
   @GET
-  @Path("/user/{id}")
+  //@Path("/user/{id}")
+  @Path("/user")
   @Produces("text/plain")
   String getCustomerString(@PathParam("id") int id) {
     Customer customer = _customerDB[id];

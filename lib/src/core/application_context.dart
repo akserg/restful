@@ -39,19 +39,20 @@ class ApplicationContext {
     if (_serviceContexts.containsKey(serviceContext.servicePath)) {
       throw new Exception("Service for ${serviceContext.servicePath} exists");
     } else {
-      _serviceContexts[serviceContext.servicePath] = serviceContext;
+      _serviceContexts[applicationPath + serviceContext.servicePath] = serviceContext;
     }
   }
   
   /**
    * Service HttpRequest [request] with [uri].
    */
-  bool service(HttpRequest request, Uri uri) {
-    if (_serviceContexts.containsKey(uri.path)) {
-      print("Processing");
-      ServiceContext serviceContext = _serviceContexts[uri.path];
-      return serviceContext.service(request, uri.path);
-    }
+  bool service(String method, HttpRequest request) {
+    _serviceContexts.keys.forEach((String servicePath){
+      if (request.uri.path.startsWith(servicePath)) {
+        ServiceContext serviceContext = _serviceContexts[servicePath];
+        return serviceContext.service(method, servicePath, request);
+      }
+    });
     return false;
   }
 }

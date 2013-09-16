@@ -30,7 +30,7 @@ class RestRuntime {
       ApplicationContext applicationContext = processor.process(app);
       // Check duplicates
       if (_applicationContexts.containsKey(applicationContext.applicationPath)) {
-        throw new Exception("Found duplicate path ${applicationContext.applicationPath}");
+        throw new Exception("Found duplicate application path ${applicationContext.applicationPath}");
       } else {
         _applicationContexts[applicationContext.applicationPath] = applicationContext;
         logger.info("${app.toString()} added to pull of REST applications.");
@@ -42,20 +42,19 @@ class RestRuntime {
    * Service HttpRequest [request] and fill in response.
    */
   bool service(HttpRequest request) {
-    String httpMethod = request.method;
     // Get application path from request
     String applicationPath = request.uri.path;
-    //
-    logger.fine("Service ${request.method} method for ${request.uri.path}");
-    //
-    if (_applicationContexts.containsKey(applicationPath)) {
-      // Return ApplicationContext.
-      ApplicationContext context = _applicationContexts[applicationPath];
-      // Get service path
-      String servicePath = "";
-      // Process request with ApplicationContext
-      return context.service(request, request.uri);
-    }
+    // Try to find application
+    _applicationContexts.keys.forEach((String applicationPath){
+      if (request.uri.path.startsWith(applicationPath)) {
+        // Application found
+        logger.fine("Service ${request.method} method for ${request.uri.path}");
+        // Return ApplicationContext.
+        ApplicationContext context = _applicationContexts[applicationPath];
+        // Process request with ApplicationContext
+        return context.service(request.method, request);
+      }
+    });
     return false;
   }
 }

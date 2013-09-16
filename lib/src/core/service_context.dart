@@ -28,21 +28,23 @@ class ServiceContext {
     if (_methods.containsKey(path)) {
       throw new Exception("Method process $path duplicate");
     } else {
-      _methods[path] = method;
+      _methods[servicePath + path] = method;
     }
   }
   
   /**
    * Service HttpRequest [request].
    */
-  bool service(HttpRequest request, String path) {
-    if (_methods.containsKey(path)) {
-      HttpResponse response = request.response;
-      response.write("Hello world");
-      response.statusCode = HttpStatus.OK;
-      response.close();
-      return true;
-    }
+  bool service(String method, String servicePath, HttpRequest request) {
+    _methods.keys.forEach((String methodPath){
+      if (request.uri.path.startsWith(methodPath)) {
+        HttpResponse response = request.response;
+        response.write("Hello world");
+        response.statusCode = HttpStatus.OK;
+        response.close();
+        return true;
+      }
+    });
     return false;
   }
 }

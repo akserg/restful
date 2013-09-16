@@ -25,11 +25,11 @@ URL is a specific character string that constitutes a reference to an internet r
 
 ### Application vs. Services
 
-The main concept of Restful is that developer might implement set of applications to process client requests splitted by reachable path. Main role here play Application and Services.    
+The main concept of Restful is that developer might implement set of applications to process client requests by reachable path. Application and his Services play main role here.    
 
 ### Application
-Application is the class the list all Services. Aplication could be annotated with [ApplicationPath] specifying resource to access to all services located underneath application path.
-Application class is abstract so inherited class must add instantiated services to set.
+Application is the class keeps the list Service classes. Aplication could be annotated with [ApplicationPath] specifying access path to all services located under application path.
+Application class is abstract. Class inherited from Application must add set of service instances.
  
 <pre class="syntax brush-javascript">
 /**
@@ -49,7 +49,7 @@ class ShoppingApllication extends Application {
 </pre>
 
 ### Service
-Service is a class processing all requests underneath [Application path]. Service class could be annotated with [Path] annotation.
+Service is a class to process specific requests under the [ApplicationPath]. Service class could be annotated with [Path] annotation.
 If [Path] exists on both the class and method, the relative path to the resource method is a concatenation of the class and method.
 
 <pre class="syntax brush-javascript">
@@ -103,11 +103,11 @@ You can have more than one HTTP method as long as they can be distinguished from
 </pre>
 
 ### Path annotation
-The [Path] could have a simple path. It doesn't support regular expressions yet.
+The [Path] contains a simple path. It does not support regular expressions yet.
 
 ### PathParam annotation
-The parameter annotation [PathParam] allows developer to map variable URI path fragments into method call.
-[PathParam] doesn't support regular expressions yet.
+The [PathParam] is annotation allows developer to map variable URI path fragments into method call.
+[PathParam] does not support regular expressions yet.
 
 <pre class="syntax brush-javascript">
 ...
@@ -120,11 +120,11 @@ The parameter annotation [PathParam] allows developer to map variable URI path f
 </pre>
 
 ### PathSegment annotations
-The [PathSegment] is set of matrix parameters described as an arbitrary set of name-value pairs embedded in a uri path segment.
+The [PathSegment] is annotation of set of matrix parameters described as an arbitrary set of name-value pairs embedded in a uri path segment.
 Not implemented yet. 
 
 ### QueryParam annotation
-The [QueryParam] annotation allows map a URI query string parameter or url form encoded parameter to method invocation.
+The [QueryParam] is annotation allows map a URI query string parameter or url form encoded parameter to method invocation.
 
 <pre class="syntax brush-javascript">
 GET /books?num=5
@@ -140,8 +140,8 @@ GET /books?num=5
 </pre>
 
 ### HeaderParam annotation
-The header parameter annotation [HeaderParam] allows developer to map a request HTTP header to method invocation.
-[HeaderParam] doesn't support regular expressions yet.
+The [HeaderParam] is annotation allows developer to map a request HTTP header to method invocation.
+[HeaderParam] does not support regular expressions yet.
 
 <pre class="syntax brush-javascript">
 GET /books?num=5
