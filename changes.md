@@ -1,6 +1,10 @@
 Restful Changes
 ========================
 
+** September 17, 2013
+
+* Library reimplemented. New code in rest_server library.
+
 ** September 16, 2013
 
 * Added loggin library.
