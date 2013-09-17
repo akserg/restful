@@ -46,6 +46,25 @@ class MediaType {
    * Create MediaType from [mimeType] string.
    */
   factory MediaType.from(String mimeType) {
-    new MediaType();
+    assert(mimeType != null);
+    List<String> parts = mimeType.split("/");
+    if (parts.length == 0) {
+      return new MediaType();
+    } else if (parts.length == 1) {
+      return new MediaType(parts[0], MEDIA_TYPE_WILDCARD);
+    } else {
+      return new MediaType(parts[0], parts[1]);
+    }
+  }
+  
+  /**
+   * Return MediaType as string.
+   */
+  String toString() {
+    StringBuffer sb = new StringBuffer();
+    sb.write(type == null ? "" : type);
+    sb.write("/");
+    sb.write(subtype == null ? "" : subtype);
+    return sb.toString(); 
   }
 }

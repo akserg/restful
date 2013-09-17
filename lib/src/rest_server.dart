@@ -31,12 +31,12 @@ class RestServer {
   /**
    * Set of REST resources.
    */
-  final Map<Resource, Resource> resources = new Map<Resource, Resource>();
+  final Set<Resource> resources = new Set<Resource>();
   
   /**
    * Create an instance of REST Server and initialise with set of [resources].
    */
-  RestServer(Set resources) {
+  RestServer(List resources) {
     logger.info("Starting REST Server");
     assert(resources != null);
     _initialise(resources);
@@ -45,7 +45,7 @@ class RestServer {
   /**
    * Initialise REST Server with [instances]
    */
-  void _initialise(Set instances) {
+  void _initialise(List instances) {
     resources.addAll(resourceParser.parse(instances));
   }
   

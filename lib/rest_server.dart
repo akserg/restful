@@ -21,4 +21,4 @@ part 'src/resource_parser.dart';
 part 'src/resource_invoker.dart';
 part 'src/response_writer.dart';
 
-final logger = new Logger("REST.Server");
+final logger = new Logger("REST");

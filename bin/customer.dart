@@ -1,4 +1,4 @@
-part of shoping_application;
+part of server;
 
 class Customer {
    int id;

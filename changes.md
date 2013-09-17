@@ -4,6 +4,8 @@ Restful Changes
 ** September 17, 2013
 
 * Library reimplemented. New code in rest_server library.
+* Application example was deleted.
+* RequestResolver was implemented.
 
 ** September 16, 2013
 

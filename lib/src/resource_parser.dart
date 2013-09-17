@@ -11,8 +11,8 @@ class ResourceParser {
   /**
    * Parse set of [instances] to find REST resources.
    */
-  Map<Resource, Resource> parse(Set instances) {
-    Map<Resource, Resource> resources = new Map<Resource, Resource>();
+  Set<Resource> parse(List instances) {
+    Set<Resource> resources = new Set<Resource>();
     instances.forEach((instance){
       // Get class mirror of instance
       ClassMirror clazz = reflect(instance).type;
@@ -44,7 +44,7 @@ class ResourceParser {
   /**
    * Find public, REST annotated methods and create Resource of each them.
    */
-  void _findMethods(ClassMirror theClass, String classPath, Map<Resource, Resource> resources) {
+  void _findMethods(ClassMirror theClass, String classPath, Set<Resource> resources) {
     // Now pass through all public methods in class to find REST annotated
     _findMethodWithRestAnnotations(theClass).forEach((MethodMirror theMethod){
       // Find path as combination class and method paths
@@ -56,16 +56,16 @@ class ResourceParser {
       // Find method
       String method = "GET";
       try {
-        Annotation annotation = _findAnnotationByType(GET, theMethod);
+        Annotation annotation = _findAnnotationByType(GET.runtimeType, theMethod);
         if (annotation != null) method = "GET";
         //
-        annotation = _findAnnotationByType(PUT, theMethod);
+        annotation = _findAnnotationByType(PUT.runtimeType, theMethod);
         if (annotation != null) method = "PUT";
         //
-        annotation = _findAnnotationByType(POST, theMethod);
+        annotation = _findAnnotationByType(POST.runtimeType, theMethod);
         if (annotation != null) method = "POST";
         //
-        annotation = _findAnnotationByType(DELETE, theMethod);
+        annotation = _findAnnotationByType(DELETE.runtimeType, theMethod);
         if (annotation != null) method = "DELETE";
       } on Exception catch(e) {}
       // Find mime type
@@ -76,11 +76,11 @@ class ResourceParser {
       } on Exception catch(e) {}
       // Create new resource
       Resource resource = new Resource(path, method, new MediaType.from(mimeType), theMethod);
-      if (resources.containsKey(resource)) {
+      if (resources.contains(resource)) {
         // Find duplicate
         throw new RestException("Found duplicate method ${theMethod.toString()}");
       } else {
-        resources[resource] = resource;
+        resources.add(resource);
         logger.fine("Added ${resource.toString()}");
       }
     });

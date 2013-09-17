@@ -1,4 +1,4 @@
-part of shoping_application;
+part of server;
 
 /**
  * Customer service process REST request to 
