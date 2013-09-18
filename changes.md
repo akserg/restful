@@ -1,6 +1,10 @@
 Restful Changes
 ========================
 
+** September 18, 2013
+
+* Removed old unused code.
+
 ** September 17, 2013
 
 * Library reimplemented. New code in rest_server library.

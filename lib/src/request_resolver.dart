@@ -20,7 +20,7 @@ class RequestResolver {
         // Check the method
         if (request.method == resource.method) {
           //
-          // Get expected Response mime type from Header
+          // Get accepted Response mime type from Header
           List<MediaType> mediaTypes = _getMediaType(request);
           // Check the produces
           if (_checkMediaType(mediaTypes, resource.produces)) {

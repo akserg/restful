@@ -15,3 +15,17 @@ class ResourceInvoker {
     throw new Exception("Not implemented yet");
   }
 }
+
+/**
+ * Class [Entity] using by [ResourceInvoker] to public result in [HttpResponse]. 
+ */
+class Entity<T> {
+  
+  final MediaType mediaType;
+  final T object;
+  
+  /**
+   * Create new [Entity] contains [object] convertable to specified [mediaType].
+   */
+  Entity(this.mediaType, this.object);
+}
